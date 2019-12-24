@@ -1,0 +1,98 @@
+﻿<Window x:Class="Project_Management.View.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Management.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        mc:Ignorable="d"
+        WindowStyle="None"
+         WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        FlowDirection="RightToLeft"
+        Title="Home" Height="450" Width="900">
+    <Window.Resources>
+        <Storyboard x:Key="sbShowRightMenu"  >
+            <ThicknessAnimation  Storyboard.TargetProperty="Margin" From="-440,35,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1"/>
+        </Storyboard>
+        <Storyboard x:Key="sbHideRightMenu">
+            <ThicknessAnimation  Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-440,35,0,0" DecelerationRatio=".9" Duration="0:0:1"/>
+        </Storyboard>
+        <Style x:Key="spSlideRight" TargetType="Button" >
+            <Style.Triggers >
+                <Trigger  Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="39"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF0B2538" >
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Horizontal"   WindowChrome.IsHitTestVisibleInChrome="True" >
+                <Button Margin="2"  x:Name="Mix"  Width="40" Background="#FF0B2538" BorderBrush="#FF244863">
+                    <materialDesign:PackIcon Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="13" Kind="ArrangeBringForward" />
+                </Button>
+                <Button Margin="2"  x:Name="Close" Width="40" Background="#FF0B2538" BorderBrush="#FF244863" WindowChrome.IsHitTestVisibleInChrome="True" >
+                    <materialDesign:PackIcon HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="14" Kind="Close" />
+                </Button>
+            </StackPanel>
+            </Grid>
+
+        </Grid>
+    
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="SpMove" Width="360" Background="#FFA6CCD7"  Margin="-280,35,0,0" Opacity="0"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  HorizontalAlignment="Right" x:Name="spRight" Background="#FF0B2538" Width="80">
+                <StackPanel  Margin="0,35,0,0" >
+                    <Button TabIndex="1" Click="ButtenSlide_Click" Height="100"  Style="{StaticResource MaterialDesignFlatButton}"  x:Name="ProjectBtn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0B2538" BorderBrush="#FF0B2538">
+                        <StackPanel HorizontalAlignment="Center" Width="75" VerticalAlignment="Center" Height="95">
+                            <materialDesign:PackIcon Foreground="White" Width="30" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Briefcase" />
+                            <TextBlock Text="المشاريع" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" />
+                        </StackPanel>
+                    </Button>
+                    <Button TabIndex="2" Click="ButtenSlide_Click" Height="100"  Style="{StaticResource MaterialDesignFlatButton}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0B2538" BorderBrush="#FF0B2538">
+                        <StackPanel HorizontalAlignment="Center" Width="75" VerticalAlignment="Center" Height="95">
+                            <materialDesign:PackIcon   Foreground="White" Width="30" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="UserGroup" />
+                            <TextBlock Text="الاجتماعات" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" />
+                        </StackPanel>
+                    </Button>
+                    <Button TabIndex="3" Click="ButtenSlide_Click" Height="100"  Style="{StaticResource MaterialDesignFlatButton}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0B2538" BorderBrush="#FF0B2538">
+                        <StackPanel HorizontalAlignment="Center" Width="75" VerticalAlignment="Center" Height="95">
+                            <materialDesign:PackIcon   Foreground="White" Width="30" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Notebook" />
+                            <TextBlock Text="المهام" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" />
+                        </StackPanel>
+                    </Button>
+                    <Button TabIndex="4" Click="ButtenSlide_Click" Height="100"  Style="{StaticResource MaterialDesignFlatButton}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0B2538" BorderBrush="#FF0B2538">
+                        <StackPanel HorizontalAlignment="Center" Width="75" VerticalAlignment="Center" Height="95">
+                            <materialDesign:PackIcon  Foreground="White" Width="30" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Account" />
+                            <TextBlock Text="الموظفين" Foreground="White" HorizontalAlignment="Center" Width="50" VerticalAlignment="Center" FontSize="10" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Grid Name="Holduser"  Grid.Column="1" Margin="0,35,0,0">
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

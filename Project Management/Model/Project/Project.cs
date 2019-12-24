@@ -11,6 +11,7 @@ namespace Project_Management.Model
         public string Name { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+        public String Note { get; set; }
         public bool stutas { get; set; }
         public DateTime DateIn { get; set; }
         public ICollection<Task> Tasks { get; set; }

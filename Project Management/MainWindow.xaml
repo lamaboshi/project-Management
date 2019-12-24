@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Management"
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ScrollViewer >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="2000"/>
+                </Grid.RowDefinitions>
+                <Button Width="100" Height="30" Grid.Row="0"/>
+                <Button Width="100" Height="30" Grid.Row="1"/>
+                <Button Width="100" Height="30" Grid.Row="2"/>
+                <Button Width="100" Height="30" Grid.Row="3"/>
+                <Button Width="100" Height="30" Grid.Row="4"/>
+                <Button Width="100" Height="30" Grid.Row="5"/>
+            </Grid>
+        </ScrollViewer>
+
     </Grid>
 </Window>
