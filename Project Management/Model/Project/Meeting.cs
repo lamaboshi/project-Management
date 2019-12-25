@@ -13,7 +13,7 @@ namespace Project_Management.Model
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public bool Stutes { get; set; }
-        public int ProjectMeetId { get; set; }
+        public int ProjectId { get; set; }
         public Project Project { get; set; }
         public ICollection<TaskMeeting> TaskMeetings { get; set; }
 

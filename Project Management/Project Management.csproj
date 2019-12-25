@@ -71,13 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201912111429533_secone.cs" />
-    <Compile Include="Migrations\201912111429533_secone.designer.cs">
-      <DependentUpon>201912111429533_secone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912221412244_Two.cs" />
-    <Compile Include="Migrations\201912221412244_Two.designer.cs">
-      <DependentUpon>201912221412244_Two.cs</DependentUpon>
+    <Compile Include="Migrations\201912251429251_one.cs" />
+    <Compile Include="Migrations\201912251429251_one.designer.cs">
+      <DependentUpon>201912251429251_one.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Util\Commend\Commend.cs" />
@@ -99,8 +95,17 @@
     <Compile Include="View\UserControl\TaskUserControl.xaml.cs">
       <DependentUpon>TaskUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UserControlEmpDegree.xaml.cs">
+      <DependentUpon>UserControlEmpDegree.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UserControlEmploye.xaml.cs">
       <DependentUpon>UserControlEmploye.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\UserControlEmpRole.xaml.cs">
+      <DependentUpon>UserControlEmpRole.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\UserControlEmpSpac.xaml.cs">
+      <DependentUpon>UserControlEmpSpac.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl\UserControlMeeting.xaml.cs">
       <DependentUpon>UserControlMeeting.xaml</DependentUpon>
@@ -143,7 +148,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControl\UserControlEmpDegree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl\UserControlEmploye.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UserControlEmpRole.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UserControlEmpSpac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,11 +205,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201912111429533_secone.resx">
-      <DependentUpon>201912111429533_secone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912221412244_Two.resx">
-      <DependentUpon>201912221412244_Two.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912251429251_one.resx">
+      <DependentUpon>201912251429251_one.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -215,6 +229,9 @@
     <Resource Include="View\Image\Meeting.png" />
     <Resource Include="View\Image\Project.png" />
     <Resource Include="View\Image\Task.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\Employe.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

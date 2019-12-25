@@ -10,7 +10,7 @@ namespace Project_Management.Model
     {
         public int? TaskId { get; set; }
         public Task Task { get; set; }
-        public int MeetingId { get; set; }
+        public int? MeetingId { get; set; }
         public Meeting Meeting { get; set; }
         public ICollection<TaskMetRPP> TaskMetRPPs { get; set; }
     }

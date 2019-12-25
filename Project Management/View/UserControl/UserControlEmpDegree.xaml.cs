@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Project_Management.View.UserControl
 {
     /// <summary>
-    /// Interaction logic for EmplProjectUserControl.xaml
+    /// Interaction logic for UserControlEmpDegree.xaml
     /// </summary>
-    public partial class EmplProjectUserControl 
+    public partial class UserControlEmpDegree : System.Windows.Controls.UserControl
     {
-        public EmplProjectUserControl()
+        public UserControlEmpDegree()
         {
             InitializeComponent();
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

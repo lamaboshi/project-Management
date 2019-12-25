@@ -39,17 +39,16 @@
             </Grid.RowDefinitions>
             <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF0B2538" >
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Horizontal"   WindowChrome.IsHitTestVisibleInChrome="True" >
-                <Button Margin="2"  x:Name="Mix"  Width="40" Background="#FF0B2538" BorderBrush="#FF244863">
-                    <materialDesign:PackIcon Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="13" Kind="ArrangeBringForward" />
-                </Button>
-                <Button Margin="2"  x:Name="Close" Width="40" Background="#FF0B2538" BorderBrush="#FF244863" WindowChrome.IsHitTestVisibleInChrome="True" >
-                    <materialDesign:PackIcon HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="14" Kind="Close" />
-                </Button>
-            </StackPanel>
+                    <Button Margin="2"  x:Name="Mix"  Width="40" Background="#FF0B2538" BorderBrush="#FF244863">
+                        <materialDesign:PackIcon Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="13" Kind="ArrangeBringForward" />
+                    </Button>
+                    <Button Margin="2"  x:Name="Close" Width="40" Background="#FF0B2538" BorderBrush="#FF244863" WindowChrome.IsHitTestVisibleInChrome="True" >
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="14" Kind="Close" />
+                    </Button>
+                </StackPanel>
             </Grid>
 
         </Grid>
-    
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>

@@ -8,9 +8,9 @@ namespace Project_Management.Model
 {
     public class TaskMetRPP:BaseModel
     {
-        public int TaskMeetingId { get; set; }
+        public int? TaskMeetingId { get; set; }
         public TaskMeeting TaskMeeting { get; set; }
-        public int RolePersonProjectId { get; set; }
+        public int? RolePersonProjectId { get; set; }
         public RolePersonProject RolePersonProject { get; set; }
 
 

@@ -9,7 +9,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        
         <ScrollViewer Margin="0,30,0,0" >
             <Grid  Height="600">
                 <StackPanel>
@@ -27,7 +26,7 @@
                     <Grid  >
                         <StackPanel Orientation="Horizontal">
                         <TextBlock  Margin="10" FontSize="14" FontWeight="Bold" Text="اسم المشروع"/>
-                            <ComboBox   Name="CbProject" Margin="7"  Width="200" HorizontalAlignment="Left"
+                                <ComboBox ItemsSource="{Binding NamePr}"   Name="CbProject" Margin="7"  Width="200" HorizontalAlignment="Left"
                           DisplayMemberPath="Name" SelectedValuePath="Id"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -44,16 +43,15 @@
                     <DataGrid  Name="DgProject" ItemsSource="{Binding ListProjTask,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True}" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
                               AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="الاسم" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="الرقم" Binding="{Binding Number}" />
-                            <DataGridTextColumn Header="تاريخ البداية " Binding="{Binding End}"/>
-                            <DataGridTextColumn Header="تاريخ النهاية" Binding="{Binding DateIn}"/>
+                                <DataGridTextColumn Header="الاسم" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="تاريخ البداية " Binding="{Binding DateStart}"/>
+                                <DataGridTextColumn Header="تاريخ النهاية" Binding="{Binding DateEnd}"/>
                             <DataGridTextColumn Header="اسم المشروع" Binding="{Binding Project.Name}"/>
-                            <DataGridCheckBoxColumn Header="الحالة" Binding="{Binding stutas}"/>
+                                <DataGridCheckBoxColumn Header="الحالة" Binding="{Binding Stutes}"/>
                             <DataGridTemplateColumn >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="Btnedit"  TabIndex="{Binding Id}">
+                                        <Button Name="Btnedit" Click="Btnedit_Click"  TabIndex="{Binding Id}">
                                             <materialDesign:PackIcon Kind="Edit" />
                                         </Button>
                                     </DataTemplate>
@@ -62,7 +60,7 @@
                             <DataGridTemplateColumn >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="BtnDelet"  TabIndex="{Binding Id}">
+                                        <Button Name="BtnDelet" Click="BtnDelet_Click"  TabIndex="{Binding Id}">
                                             <materialDesign:PackIcon Kind="DeleteRestore" />
                                         </Button>
                                     </DataTemplate>

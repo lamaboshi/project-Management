@@ -22,6 +22,7 @@ namespace Project_Management.View.UserControl
     /// </summary>
     public partial class AddProject 
     {
+        int id;
         public Model.ContactContext context;
         public AddProject()
         {
@@ -52,10 +53,13 @@ namespace Project_Management.View.UserControl
             };
             if (Stut.IsChecked == true)
                 project.stutas = true;
+       else if (Stut.IsChecked == false)
+                project.stutas = false;
             context.Projects.Add(project);
             context.SaveChanges();
             FillDate();
             DgProject.ItemsSource = ListProject;
+            clr();
 
         }
         public void FillDate()
@@ -67,13 +71,18 @@ namespace Project_Management.View.UserControl
         private void Btnedit_Click(object sender, RoutedEventArgs e)
         {
             Edit.Visibility = Visibility.Visible;
-            int id= ((Button)sender).TabIndex;
-            var s = _ListProject.FirstOrDefault(m => m.Id == id);
+            int idP= ((Button)sender).TabIndex;
+            id = idP;
+            var s = _ListProject.FirstOrDefault(m => m.Id == idP);
             NameProj.Text = s.Name;
             DateStart.Text = s.Start.ToString();
             DateEnd.Text = s.End.ToString();
             note.Text = s.Note;
             DateIn.IsEnabled = false;
+            if (s.stutas == false)
+                Stut.IsChecked = false;
+            else if (s.stutas == true)
+                Stut.IsChecked = true;
 
         }
         private void BtnDelet_Click(object sender, RoutedEventArgs e)
@@ -86,16 +95,28 @@ namespace Project_Management.View.UserControl
         }
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            var ed = context.Projects.SingleOrDefault(n => n.Name == NameProj.Text);
+
+            var ed = context.Projects.SingleOrDefault(n => n.Id == id);
             ed.Name = NameProj.Text;
             ed.Start = DateStart.SelectedDate.Value;
             ed.End = DateEnd.SelectedDate.Value;
             ed.Note = note.Text;
             if (Stut.IsChecked == true)
                 ed.stutas = true;
+            else if (Stut.IsChecked == false)
+                ed.stutas = false;
             context.SaveChanges();
             Edit.Visibility = Visibility.Hidden;
             FillDate();
+            clr();
+        }
+       private void clr()
+        {
+            NameProj.Text = "";
+            DateStart.Text = "";
+            DateEnd.Text = "";
+            note.Text = "";
+            Stut.IsChecked = false;
         }
     }
 }

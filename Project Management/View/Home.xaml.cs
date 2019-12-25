@@ -76,6 +76,8 @@ namespace Project_Management.View
                 SpMove.Children.Add(employe);
                 index = 0;
             }
+
+
             
             Storyboard sb = new Storyboard();
             Storyboard stb = new Storyboard();
@@ -99,6 +101,32 @@ namespace Project_Management.View
             Storyboard.SetTargetProperty(thickness, new PropertyPath(StackPanel.MarginProperty));
             stb.Begin();
             sb.Begin();
+            if (Holduser != null)
+            {
+                Holduser.Children.Clear();
+                if (index == 1)
+                {
+                    SpMove.Children.Add(project);
+
+                    index = 0;
+                }
+                else if (index == 2)
+                {
+                    SpMove.Children.Add(meeting);
+                    index = 0;
+                }
+                else if (index == 3)
+                {
+                    SpMove.Children.Add(task);
+                    index = 0;
+                }
+                else if (index == 4)
+                {
+                    SpMove.Children.Add(employe);
+                    index = 0;
+                }
+
+            }
 
         }
    

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class secone : DbMigration
+    public partial class one : DbMigration
     {
         public override void Up()
         {
@@ -106,6 +106,7 @@
                         Name = c.String(),
                         Start = c.DateTime(nullable: false),
                         End = c.DateTime(nullable: false),
+                        Note = c.String(),
                         stutas = c.Boolean(nullable: false),
                         DateIn = c.DateTime(nullable: false),
                         IsDelete = c.Boolean(nullable: false),
@@ -122,13 +123,12 @@
                         DateStart = c.DateTime(nullable: false),
                         DateEnd = c.DateTime(nullable: false),
                         Stutes = c.Boolean(nullable: false),
-                        ProjectMeetId = c.Int(nullable: false),
+                        ProjectId = c.Int(nullable: false),
                         IsDelete = c.Boolean(nullable: false),
-                        Project_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Projects", t => t.Project_Id)
-                .Index(t => t.Project_Id);
+                .ForeignKey("dbo.Projects", t => t.ProjectId, cascadeDelete: true)
+                .Index(t => t.ProjectId);
             
             CreateTable(
                 "dbo.TaskMeetings",
@@ -136,11 +136,11 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         TaskId = c.Int(),
-                        MeetingId = c.Int(nullable: false),
+                        MeetingId = c.Int(),
                         IsDelete = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Meetings", t => t.MeetingId, cascadeDelete: true)
+                .ForeignKey("dbo.Meetings", t => t.MeetingId)
                 .ForeignKey("dbo.Tasks", t => t.TaskId)
                 .Index(t => t.TaskId)
                 .Index(t => t.MeetingId);
@@ -167,13 +167,13 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        TaskMeetingId = c.Int(nullable: false),
-                        RolePersonProjectId = c.Int(nullable: false),
+                        TaskMeetingId = c.Int(),
+                        RolePersonProjectId = c.Int(),
                         IsDelete = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.RolePersonProjects", t => t.RolePersonProjectId, cascadeDelete: true)
-                .ForeignKey("dbo.TaskMeetings", t => t.TaskMeetingId, cascadeDelete: true)
+                .ForeignKey("dbo.RolePersonProjects", t => t.RolePersonProjectId)
+                .ForeignKey("dbo.TaskMeetings", t => t.TaskMeetingId)
                 .Index(t => t.TaskMeetingId)
                 .Index(t => t.RolePersonProjectId);
             
@@ -190,7 +190,7 @@
             DropForeignKey("dbo.TaskMeetings", "TaskId", "dbo.Tasks");
             DropForeignKey("dbo.Tasks", "ProjectId", "dbo.Projects");
             DropForeignKey("dbo.TaskMeetings", "MeetingId", "dbo.Meetings");
-            DropForeignKey("dbo.Meetings", "Project_Id", "dbo.Projects");
+            DropForeignKey("dbo.Meetings", "ProjectId", "dbo.Projects");
             DropForeignKey("dbo.RolePersons", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.RolePersons", "PersonId", "dbo.People");
             DropForeignKey("dbo.Specialties", "DegreeId", "dbo.Degrees");
@@ -199,7 +199,7 @@
             DropIndex("dbo.Tasks", new[] { "ProjectId" });
             DropIndex("dbo.TaskMeetings", new[] { "MeetingId" });
             DropIndex("dbo.TaskMeetings", new[] { "TaskId" });
-            DropIndex("dbo.Meetings", new[] { "Project_Id" });
+            DropIndex("dbo.Meetings", new[] { "ProjectId" });
             DropIndex("dbo.RolePersonProjects", new[] { "RolePersonId" });
             DropIndex("dbo.RolePersonProjects", new[] { "ProjectId" });
             DropIndex("dbo.RolePersons", new[] { "RoleId" });
