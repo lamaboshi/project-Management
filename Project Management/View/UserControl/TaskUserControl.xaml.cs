@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +21,17 @@ namespace Project_Management.View.UserControl
     /// <summary>
     /// Interaction logic for TaskUserControl.xaml
     /// </summary>
-    public partial class TaskUserControl 
+    public partial class TaskUserControl : System.Windows.Controls.UserControl
     {
         int id;
+        private BackgroundWorker backgroundWorker1 = null;
         public Model.ContactContext context;
         public TaskUserControl()
         {
             InitializeComponent();
             context = new Model.ContactContext();
             FillTask();
-            FillProject();
+      
 
         }
         private ObservableCollection<Model.Task> _ListProjTask;
@@ -51,18 +53,48 @@ namespace Project_Management.View.UserControl
             }
         }
         void FillTask()
-        { 
-            _ListProjTask = context.Tasks.Where(m => !m.IsDelete).ToObservableCollection();
-            DgProject.ItemsSource = ListProjTask;
-            _ListProjectTa = context.Projects.Where(m => !m.IsDelete).ToObservableCollection();
-            CbProject.ItemsSource = ListProjectTa.ToList();
-            CbProject.DisplayMemberPath = "Name";
-            CbProject.SelectedValuePath = "Id";      
-        }
-        void FillProject()
         {
+            backgroundWorker1 = new BackgroundWorker();
+            DTask.IsOpen = true;
+            this.backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.backgroundWorker1.RunWorkerAsync();
+           
+
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            _ListProjTask = context.Tasks.Where(m => !m.IsDelete).ToObservableCollection();
+            _ListProjectTa = context.Projects.Where(m => !m.IsDelete).ToObservableCollection();
             _ListProjectTa = context.Projects.Where(m => !m.IsDelete).ToObservableCollection();
         }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            DTask.IsOpen = false;
+            Parallel.ForEach(ListProjTask, p => {
+
+                Application.Current.Dispatcher.
+                BeginInvoke(new Action(() => {
+                    DgProject.Items.Add(p);
+                }),
+
+                System.Windows.Threading.DispatcherPriority.Background);
+            });
+            Parallel.ForEach(ListProjectTa, m =>
+             {
+                 Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                 {
+                     CbProject.Items.Add(m);
+                 }),
+                System.Windows.Threading.DispatcherPriority.Background);
+             });
+            CbProject.DisplayMemberPath = "Name";
+            CbProject.SelectedValuePath = "Id";
+
+        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
 
@@ -126,6 +158,7 @@ namespace Project_Management.View.UserControl
                 Stut.IsChecked = false;
             else if (s.Stutes == true)
                 Stut.IsChecked = true;
+
         }
 
         private void BtnDelet_Click(object sender, RoutedEventArgs e)

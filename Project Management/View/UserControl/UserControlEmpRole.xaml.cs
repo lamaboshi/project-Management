@@ -20,9 +20,29 @@ namespace Project_Management.View.UserControl
     /// </summary>
     public partial class UserControlEmpRole : System.Windows.Controls.UserControl
     {
+        Model.ContactContext context;
+
         public UserControlEmpRole()
         {
             InitializeComponent();
+            context = new Model.ContactContext();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Model.Employee.Role role = new Model.Employee.Role()
+            {
+                RoleEmpl=namerole.Text
+            };
+            context.Roles.Add(role);
+            context.SaveChanges();
+            namerole.Text = "";
+            
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

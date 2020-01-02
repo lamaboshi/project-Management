@@ -83,8 +83,14 @@
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InnerClass\EmployeeClass.cs" />
+    <Compile Include="View\InnerClass\EmployeeInfo.cs" />
+    <Compile Include="View\InnerClass\projectclass.cs" />
     <Compile Include="View\UserControl\AddProject.xaml.cs">
       <DependentUpon>AddProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\AllProjectUserControl.xaml.cs">
+      <DependentUpon>AllProjectUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl\EmplProjectUserControl.xaml.cs">
       <DependentUpon>EmplProjectUserControl.xaml</DependentUpon>
@@ -113,6 +119,9 @@
     <Compile Include="View\UserControl\UserControlProject.xaml.cs">
       <DependentUpon>UserControlProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UserControlShowEmploye.xaml.cs">
+      <DependentUpon>UserControlShowEmploye.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UserControlTask.xaml.cs">
       <DependentUpon>UserControlTask.xaml</DependentUpon>
     </Compile>
@@ -133,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\AddProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\AllProjectUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\UserControlProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UserControlShowEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

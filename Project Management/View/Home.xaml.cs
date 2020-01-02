@@ -28,9 +28,10 @@ namespace Project_Management.View
         UserControl.UserControlTask task;
         UserControl.UserControlMeeting meeting;
         UserControl.UserControlEmploye employe;
+        
         private Model.ContactContext context;
         public static StackPanel MultiSlide;
-        public static Grid HoldMulti;
+        public static ContentControl HoldMulti;
         public Home()
         {
             InitializeComponent();
@@ -44,41 +45,34 @@ namespace Project_Management.View
                     WindowState = WindowState.Normal;
             };
             Close.Click += (s, e) => Close();
-            project = new UserControl.UserControlProject();
-            task = new UserControl.UserControlTask();
-            meeting = new UserControl.UserControlMeeting();
-            employe = new UserControl.UserControlEmploye();
             context = new Model.ContactContext();
-    }
-        
-        
-
+        }
         private void  ButtenSlide_Click(object sender, RoutedEventArgs e)
         {
-
+           
             SpMove.Children.Clear();
             index = ((Button)sender).TabIndex;
             
-            if (index == 1) { 
-            SpMove.Children.Add(project);
-
+            if (index == 1) {
+                project = new UserControl.UserControlProject();
+                SpMove.Children.Add(project);
                 index = 0;
             }
-            else if (index == 2) { 
+            else if (index == 2) {
+                meeting = new UserControl.UserControlMeeting();
                 SpMove.Children.Add(meeting);
                 index = 0;
             }
-            else if (index == 3) { 
+            else if (index == 3) {
+                task = new UserControl.UserControlTask();
                 SpMove.Children.Add(task);
                 index = 0;
             }
-            else if (index == 4) { 
+            else if (index == 4) {
+                employe = new UserControl.UserControlEmploye();
                 SpMove.Children.Add(employe);
                 index = 0;
             }
-
-
-            
             Storyboard sb = new Storyboard();
             Storyboard stb = new Storyboard();
             ThicknessAnimation thickness = new ThicknessAnimation() {
@@ -103,7 +97,8 @@ namespace Project_Management.View
             sb.Begin();
             if (Holduser != null)
             {
-                Holduser.Children.Clear();
+                //Holduser.Children.Clear();
+                Holduser.Content = null;
                 if (index == 1)
                 {
                     SpMove.Children.Add(project);
@@ -132,11 +127,8 @@ namespace Project_Management.View
    
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            FillProject();
+            
         }
-        public void FillProject()
-        {
 
-        }
     }
 }

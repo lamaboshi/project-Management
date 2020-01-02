@@ -9,21 +9,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <Border Width="200" Background="White" BorderThickness="5" BorderBrush="#FF888EBC" Height="200">
+        <Border Width="250" Background="White" BorderThickness="5" CornerRadius="5,0,5,0" BorderBrush="#FFB75D7E" Height="300" >
             <Grid>
                 <StackPanel>
-
-                    <TextBlock FontSize="20" Text="تخصص الموظف"  FontWeight="DemiBold" Margin="5" TextAlignment="Center"/>
-                    <Image></Image>
-                    <TextBlock FontSize="15"  Text="لغة الاختصاص" Margin="5"/>
-                    <TextBox  Margin="5" Name="NameProj"   materialDesign:HintAssist.Hint="الاسم "/>
-
+                    <TextBlock FontSize="20" Text="مهنة الموظف"  FontWeight="DemiBold"  Margin="5" TextAlignment="Center"/>
+                    <StackPanel Margin="2,20">
+                        <TextBlock FontSize="15"  Text=" المهنة" Margin="5"/>
+                        <TextBox  Margin="5" Name="spacname"   materialDesign:HintAssist.Hint="الاسم "/>
+                        <TextBlock FontSize="15"  Text="لغة الاختصاص" Margin="5"/>
+                        <ComboBox Name="ChDer"></ComboBox>
+                    </StackPanel>
                 </StackPanel>
-                <Button Background="#FF234F71" Foreground="White" Margin="5" VerticalAlignment="Bottom"
-    Style="{StaticResource MaterialDesignRaisedAccentButton}"
-    Width="100">
-                    ACCENT
-                </Button>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Name="Save" Click="Save_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF234F71" Margin="10" VerticalAlignment="Bottom" Width="100">
+                        <TextBlock Text="اضافة" FontSize="15"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

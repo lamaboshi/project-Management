@@ -4,28 +4,124 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Management"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local1="clr-namespace:Project_Management.View.UserControl"
         mc:Ignorable="d"
-        
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ScrollViewer >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="2000"/>
-                </Grid.RowDefinitions>
-                <Button Width="100" Height="30" Grid.Row="0"/>
-                <Button Width="100" Height="30" Grid.Row="1"/>
-                <Button Width="100" Height="30" Grid.Row="2"/>
-                <Button Width="100" Height="30" Grid.Row="3"/>
-                <Button Width="100" Height="30" Grid.Row="4"/>
-                <Button Width="100" Height="30" Grid.Row="5"/>
-            </Grid>
-        </ScrollViewer>
+        <Grid Background="White">
+            <StackPanel  Orientation="Horizontal">
+                <materialDesign:Chip Margin="2" Content="{Binding language}" Height="20" Width="40"   Background="Lavender"/>
+            </StackPanel>
+            <materialDesign:Card Margin="5" Height="300" Width="350" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" Padding="10" >
+                        <Grid  Height="290" Width="340">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <StackPanel>
+                                    <StackPanel  Orientation="Horizontal">
+                                        <Ellipse Height="15" Width="15" Fill="Red"/>
+                                        <Ellipse Height="15" Width="15" Fill="Green"/>
+                                        <Ellipse Height="15" Width="15" Fill="Blue"/>
+                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Height="20" Width="20" Foreground="#FF234F71" Margin="7" Kind="ChartFinance" />
+                                                <TextBlock Text="{Binding Name}" Foreground="#FF234F71" Margin="2" FontWeight="Regular" FontSize="18"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Height="25" Foreground="#FF234F71" Kind="EventTime" />
+                                                <Label Margin="1" Content="1/1/2000" Foreground="#FF234F71" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel  Grid.Column="1">
+                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                <materialDesign:PackIcon Height="25" Foreground="#FF234F71" Kind="EventTime" />
+                                                <Label Content="1/1/2000" Foreground="#FF234F71" />
+                                            </StackPanel>
+                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                <materialDesign:PackIcon Height="25" Foreground="#FF234F71" Kind="EventTime" />
+                                                <Label Content="1/1/2000" Foreground="#FF234F71" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
+                            <Grid Grid.Row="1">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2,10" FontSize="12"  TextAlignment="Center" Text="lasaddlalalal :"/>
+                                    <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <StackPanel  Orientation="Horizontal">
+
+                                            <materialDesign:Chip Name="chipname" Margin="2" Height="20" Width="40"  Background="Lavender"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Height="25" Foreground="#FF234F71" Kind="Vote" />
+                                            <TextBlock Foreground="#FF234F71" Margin="5" TextAlignment="Center" Text="count Task"/>
+                                        </StackPanel>
+                                        <TextBlock Margin="2" Text="64531" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Height="25" Foreground="#FF234F71" Kind="Vote" />
+                                            <TextBlock Foreground="#FF234F71" Margin="5" TextAlignment="Center" Text="count Meeting"/>
+                                        </StackPanel>
+                                        <TextBlock Margin="3" Text="468484651"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ListView Grid.Column="1" Margin="2" Width="Auto"   x:Name="lvwStudent" HorizontalAlignment="Right"  >
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="" Width="50">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                <Label Content ="22" FontSize="14" HorizontalContentAlignment="Center"></Label>
+                                            </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="NO" Width="53">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate >
+                                                        <Label Content ="22" FontSize="14" HorizontalContentAlignment="Center"></Label>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="NO" Width="53">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate >
+                                                        <Label Content ="22" FontSize="14" HorizontalContentAlignment="Center"></Label>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+
+                            </Grid>
+                        </Grid>
+                    </materialDesign:Card>
+
+        </Grid>
 
     </Grid>
+
 </Window>

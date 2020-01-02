@@ -7,23 +7,28 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-        <Border Width="200" Background="White" BorderThickness="5" BorderBrush="#FF888EBC" Height="200">
+    <materialDesign:Card
+    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+    materialDesign:ShadowAssist.ShadowEdges="Bottom,Left,Right"
+    Padding="32">
+
+
+        <Border Width="200" Background="White" BorderThickness="5" CornerRadius="5,0,5,0" BorderBrush="#FFB75D7E" Height="250" >
             <Grid>
                 <StackPanel>
 
-                    <TextBlock FontSize="20" Text="رتبة الموظف"  FontWeight="DemiBold" Margin="5" TextAlignment="Center"/>
-                    <Image></Image>
-                    <TextBlock FontSize="15"  Text="لغة الاختصاص" Margin="5"/>
-                    <TextBox  Margin="5" Name="NameProj"   materialDesign:HintAssist.Hint="الاسم "/>
-
+                    <TextBlock FontSize="20" Text="درجة الموظف"  FontWeight="DemiBold"  Margin="5" TextAlignment="Center"/>
+                    <StackPanel Margin="2,20">
+                        <TextBlock FontSize="15"   Text="درجة الاختصاص" Margin="5"/>
+                        <TextBox  Margin="5" Name="namerole"   materialDesign:HintAssist.Hint="الاسم "/>
+                    </StackPanel>
                 </StackPanel>
-                <Button Background="#FF234F71" Foreground="White" Margin="5" VerticalAlignment="Bottom"
-    Style="{StaticResource MaterialDesignRaisedAccentButton}"
-    Width="100">
-                    ACCENT
-                </Button>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Name="Add" Click="Add_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF234F71" Margin="10" VerticalAlignment="Bottom" Width="100">
+                        <TextBlock Text="اضافة" FontSize="15"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Border>
-    </Grid>
+    </materialDesign:Card>
 </UserControl>

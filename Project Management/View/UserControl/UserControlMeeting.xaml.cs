@@ -19,17 +19,17 @@ namespace Project_Management.View.UserControl
     /// <summary>
     /// Interaction logic for UserControlMeeting.xaml
     /// </summary>
-    public partial class UserControlMeeting 
+    public partial class UserControlMeeting : System.Windows.Controls.UserControl
     {
         private StackPanel StackPanel;
-        private Grid grid;
+        private ContentControl content;
         MettingProjectUserControl metting;
         EmplProjectUserControl EmplProject;
         public UserControlMeeting()
         {
             InitializeComponent();
             StackPanel = Home.MultiSlide;
-            grid = Home.HoldMulti;
+            content = Home.HoldMulti;
             metting = new MettingProjectUserControl();
             EmplProject = new EmplProjectUserControl();
         }
@@ -53,19 +53,22 @@ namespace Project_Management.View.UserControl
         private void BtnNewOne_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(metting);
+            //grid.Children.Add(metting);
+            content.Content = metting;
         }
 
         private void BtnEM_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(EmplProject);
+            //grid.Children.Add(EmplProject);
+            content.Content = EmplProject;
         }
 
         private void BtnAll_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(metting);
+            //grid.Children.Add(metting);TaskUser
+            content.Content = metting;
         }
     }
 }

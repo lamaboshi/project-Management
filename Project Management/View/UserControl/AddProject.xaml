@@ -8,10 +8,22 @@
              FlowDirection="RightToLeft"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <materialDesign:DialogHost Name="Dh" IsOpen="False" >
+        <materialDesign:DialogHost.DialogContent>
+            <ProgressBar
+                 Style="{StaticResource MaterialDesignCircularProgressBar}"
+                 Value="35"
+                 IsIndeterminate="True" />
+        </materialDesign:DialogHost.DialogContent>
         <ScrollViewer Margin="0,30,0,0" >
-            <Grid  Height="600">
-                <StackPanel   VerticalAlignment="Top"  >
+            <Grid Background="White">
+            
+                <Grid  Height="Auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"  VerticalAlignment="Top"  >
                     <TextBlock  Margin="5" FontSize="14" FontWeight="Bold" Text=" اسم المشروع"/>
                     <TextBox Name="NameProj"  Margin="5" materialDesign:HintAssist.Hint="الاسم "/>
                     <StackPanel Orientation="Horizontal">
@@ -38,14 +50,14 @@
                         </Grid>
                     </Grid>
                 </StackPanel>
-                <StackPanel Margin="5" Height="360"  VerticalAlignment="Bottom">
-                    <DataGrid  Name="DgProject" ItemsSource="{Binding ListProject,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True}" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
+                <StackPanel Grid.Row="1" Margin="5" Height="Auto"  >
+                    <DataGrid  Name="DgProject"  IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
                               AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="الاسم" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="تاريخ البداية" Binding="{Binding Start}" />
-                            <DataGridTextColumn Header="تاريخ النهاية " Binding="{Binding End}"/>
-                            <DataGridTextColumn Header="تاريخ دخول المشروع" Binding="{Binding DateIn}"/>
+                            <DataGridTextColumn Header="تاريخ البداية" Binding="{Binding Start ,StringFormat=d}"/>
+                            <DataGridTextColumn Header="تاريخ النهاية " Binding="{Binding End,StringFormat=d}"/>
+                            <DataGridTextColumn Header="تاريخ دخول المشروع" Binding="{Binding DateIn,StringFormat=d}"/>
                             <DataGridTextColumn Header="الملاحظات" Binding="{Binding Note}"/>
                             <DataGridCheckBoxColumn Header="الحالة" Binding="{Binding stutas}"/>
                             <DataGridTemplateColumn >
@@ -70,6 +82,8 @@
                     </DataGrid>
                 </StackPanel>
             </Grid>
-        </ScrollViewer>
+        
     </Grid>
+        </ScrollViewer>
+    </materialDesign:DialogHost>
 </UserControl>

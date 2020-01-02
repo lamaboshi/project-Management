@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,30 @@ namespace Project_Management.View.UserControl
     /// </summary>
     public partial class UserControlEmpDegree : System.Windows.Controls.UserControl
     {
+        Model.ContactContext context;
+
         public UserControlEmpDegree()
         {
             InitializeComponent();
+            context = new Model.ContactContext();
+
+        }
+
+        
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Model.Employee.Degree degree = new Model.Employee.Degree()
+            {
+                language = Namelang.Text
+            };
+            context.Degrees.Add(degree);
+            context.SaveChanges();
+            Namelang.Text = "";
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

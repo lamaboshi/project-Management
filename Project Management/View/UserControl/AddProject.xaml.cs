@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,16 +22,17 @@ namespace Project_Management.View.UserControl
     /// <summary>
     /// Interaction logic for AddProject.xaml
     /// </summary>
-    public partial class AddProject 
+    public partial class AddProject : System.Windows.Controls.UserControl
     {
         int id;
         public Model.ContactContext context;
+        private BackgroundWorker backgroundWorker1 = null;
         public AddProject()
         {
             InitializeComponent();
             context = new Model.ContactContext();
             FillDate();
-            DgProject.ItemsSource = ListProject;
+          
         }
         private ObservableCollection<Model.Project> _ListProject;
         public ObservableCollection<Model.Project> ListProject
@@ -58,21 +61,44 @@ namespace Project_Management.View.UserControl
             context.Projects.Add(project);
             context.SaveChanges();
             FillDate();
-            DgProject.ItemsSource = ListProject;
             clr();
 
         }
         public void FillDate()
-        { 
-            _ListProject = context.Projects.Where(m => !m.IsDelete).ToObservableCollection();
-            DgProject.ItemsSource = ListProject;
-        }
+        {
 
+            backgroundWorker1 = new BackgroundWorker();
+            Dh.IsOpen = true;
+            this.backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.backgroundWorker1.RunWorkerAsync();
+            
+        }
+        private  void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            _ListProject = context.Projects.Where(m => !m.IsDelete).ToObservableCollection();
+        }
+        
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Dh.IsOpen = false;
+            Parallel.ForEach(ListProject,p=> {
+
+                Application.Current.Dispatcher.
+                BeginInvoke(new Action(() => {
+                    DgProject.Items.Add(p);
+                }),
+
+                System.Windows.Threading.DispatcherPriority.Background);
+            });
+           
+        }
         private void Btnedit_Click(object sender, RoutedEventArgs e)
         {
             Edit.Visibility = Visibility.Visible;
             int idP= ((Button)sender).TabIndex;
             id = idP;
+
             var s = _ListProject.FirstOrDefault(m => m.Id == idP);
             NameProj.Text = s.Name;
             DateStart.Text = s.Start.ToString();

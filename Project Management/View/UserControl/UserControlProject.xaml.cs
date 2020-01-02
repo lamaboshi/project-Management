@@ -19,7 +19,7 @@ namespace Project_Management.View.UserControl
     /// <summary>
     /// Interaction logic for UserControlProject.xaml
     /// </summary>
-    public partial class UserControlProject 
+    public partial class UserControlProject : System.Windows.Controls.UserControl
     {
 
         private StackPanel StackPanel;
@@ -27,18 +27,14 @@ namespace Project_Management.View.UserControl
         TaskUserControl TaskUser;
         MettingProjectUserControl metting;
         EmplProjectUserControl EmplProject;
-        private Grid grid;
+        private ContentControl content;
+        UserControl.AllProjectUserControl AllProject;
         public UserControlProject()
         {
             InitializeComponent();
 
             StackPanel= Home.MultiSlide;
-            grid = Home.HoldMulti;
-            addProject = new AddProject();
-            TaskUser = new TaskUserControl();
-            metting = new MettingProjectUserControl();
-            EmplProject = new EmplProjectUserControl();
-
+            content = Home.HoldMulti;
         }
         public void HideStack()
         {
@@ -60,31 +56,40 @@ namespace Project_Management.View.UserControl
         {
             HideStack();
 
-            grid.Children.Add(addProject);
-
+            addProject = new AddProject();
+            //grid.Children.Add(addProject);
+            content.Content = addProject;
         }
         private void BtnMetProjecrt_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(metting);
+            metting = new MettingProjectUserControl();
+            //grid.Children.Add(metting);
+            content.Content = metting;
         }
 
         private void BtnTasProjecrt_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(TaskUser);
+            TaskUser = new TaskUserControl();
+            //grid.Children.Add(TaskUser);
+            content.Content = TaskUser;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(EmplProject);
+            EmplProject = new EmplProjectUserControl();
+            //grid.Children.Add(EmplProject);
+            content.Content = EmplProject;
         }
 
-        private void BtnProjecrts_Click(object sender, RoutedEventArgs e)
+        private void  BtnProjecrts_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            grid.Children.Add(addProject);
+            AllProject = new AllProjectUserControl();
+            content.Content = AllProject;
+
         }
     }
 }

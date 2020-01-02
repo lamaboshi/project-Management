@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,25 @@ namespace Project_Management.View.UserControl
     /// <summary>
     /// Interaction logic for UserControlEmploye.xaml
     /// </summary>
-    public partial class UserControlEmploye 
+    public partial class UserControlEmploye : System.Windows.Controls.UserControl
     {
         private StackPanel StackPanel;
+        private ContentControl content;
+        EmplProjectUserControl EmplProject;
+        UserControlEmpRole role;
+        UserControlShowEmploye showEmploye;
+        UserControlEmpDegree degree;
+        UserControlEmpSpac spac;
         public UserControlEmploye()
         {
             InitializeComponent();
             StackPanel = Home.MultiSlide;
+            content = Home.HoldMulti;
+            EmplProject = new EmplProjectUserControl();
+            role = new UserControlEmpRole();
+            showEmploye = new UserControlShowEmploye();
+            degree = new UserControlEmpDegree();
+            spac = new UserControlEmpSpac();
         }
         public void HideStack()
         {
@@ -47,21 +60,31 @@ namespace Project_Management.View.UserControl
         private void BtnDrg_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
+            content.Content = degree;
         }
 
         private void BtnNewOne_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
+            content.Content = EmplProject;
         }
 
         private void BtnRloy_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
+            content.Content = role;
         }
 
         private void BtnSpecial_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
+            content.Content = spac;
+        }
+
+        private void All_Click(object sender, RoutedEventArgs e)
+        {
+            HideStack();
+            content.Content = showEmploye;
         }
     }
 }
