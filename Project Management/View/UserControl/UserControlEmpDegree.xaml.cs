@@ -22,7 +22,7 @@ namespace Project_Management.View.UserControl
     public partial class UserControlEmpDegree : System.Windows.Controls.UserControl
     {
         Model.ContactContext context;
-
+        public DialogHost host;
         public UserControlEmpDegree()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace Project_Management.View.UserControl
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
     }
 }

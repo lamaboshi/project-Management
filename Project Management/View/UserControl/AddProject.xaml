@@ -28,10 +28,10 @@
                     <TextBox Name="NameProj"  Margin="5" materialDesign:HintAssist.Hint="الاسم "/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  Margin="10" FontSize="14" FontWeight="DemiBold" Text="تاريخ بداية المشروع"/>
-                        <DatePicker Name="DateStart" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
+                            <DatePicker DisplayDateStart="1/1/1700" DisplayDateEnd="1/1/2100"  Name="DateStart" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         <TextBlock  Margin="10" FontSize="14" FontWeight="DemiBold" Text="تاريخ انتهاء المشروع"/>
-                        <DatePicker Name="DateEnd" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
+                            <DatePicker DisplayDateStart="1/1/1700" DisplayDateEnd="1/1/2100" Name="DateEnd" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </StackPanel>
                     <TextBlock  Margin="5" FontSize="14" FontWeight="Bold" Text="ملاحظات"/>
@@ -39,7 +39,7 @@
                     <Grid >
                         <StackPanel Orientation="Horizontal">
                             <TextBlock  Margin="5" FontSize="14" FontWeight="DemiBold" Text=" تاريخ دخول المشروع"/>
-                            <DatePicker Name="DateIn" Margin="5" Width="200" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Pick Date"
+                                <DatePicker DisplayDateStart="1/1/1700" DisplayDateEnd="1/1/2100" Name="DateIn" Margin="5" Width="200" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Pick Date"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             <TextBlock   Margin="5" FontSize="14" FontWeight="DemiBold" Text=" حالة المشروع"/>
                             <ToggleButton Content="X" Margin="20,0,0,0" Name="Stut" Background="#FF234F71"  Foreground="White" Style="{StaticResource MaterialDesignActionAccentToggleButton}"  IsChecked="False"/>

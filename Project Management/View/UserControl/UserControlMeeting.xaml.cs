@@ -24,14 +24,12 @@ namespace Project_Management.View.UserControl
         private StackPanel StackPanel;
         private ContentControl content;
         MettingProjectUserControl metting;
-        EmplProjectUserControl EmplProject;
+
         public UserControlMeeting()
         {
             InitializeComponent();
             StackPanel = Home.MultiSlide;
             content = Home.HoldMulti;
-            metting = new MettingProjectUserControl();
-            EmplProject = new EmplProjectUserControl();
         }
         public void HideStack()
         {
@@ -53,22 +51,10 @@ namespace Project_Management.View.UserControl
         private void BtnNewOne_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-            //grid.Children.Add(metting);
+            metting = new MettingProjectUserControl();
             content.Content = metting;
         }
 
-        private void BtnEM_Click(object sender, RoutedEventArgs e)
-        {
-            HideStack();
-            //grid.Children.Add(EmplProject);
-            content.Content = EmplProject;
-        }
 
-        private void BtnAll_Click(object sender, RoutedEventArgs e)
-        {
-            HideStack();
-            //grid.Children.Add(metting);TaskUser
-            content.Content = metting;
-        }
     }
 }

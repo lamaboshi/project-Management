@@ -27,10 +27,10 @@
                             <TextBox Name="NameProj"  Margin="5" materialDesign:HintAssist.Hint="الاسم "/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock  Margin="10" FontSize="14" FontWeight="DemiBold" Text="تاريخ بداية المهمة"/>
-                                <DatePicker Name="DateStart" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
+                            <DatePicker DisplayDateStart="1/1/1700" DisplayDateEnd="1/1/2100" Name="DateStart" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                 <TextBlock  Margin="10" FontSize="14" FontWeight="DemiBold" Text="تاريخ انتهاء المهمة"/>
-                                <DatePicker Name="DateEnd" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
+                            <DatePicker DisplayDateStart="1/1/1700" DisplayDateEnd="1/1/2100" Name="DateEnd" Margin="5" Width="200" materialDesign:HintAssist.Hint="Pick Date"
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             </StackPanel>
                             <Grid  >

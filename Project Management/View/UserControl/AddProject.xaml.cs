@@ -1,4 +1,5 @@
-﻿using Project_Management.Util.Extension_Method;
+﻿using MaterialDesignThemes.Wpf;
+using Project_Management.Util.Extension_Method;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -46,21 +47,37 @@ namespace Project_Management.View.UserControl
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Model.Project project = new Model.Project()
+            if (DateStart.Text == null)
+                MessageBox.Show("ادخل تاريخ البداية");
+            if (DateEnd.Text == null)
+                DateEnd.Text = "الرجاء ادخال البيانات";
+            if (DateIn.Text == null)
+                DateIn.Text = "الرجاء ادخال البيانات";
+            if(DateStart.Text!= null && DateStart.Text != null && DateIn.Text != null) { 
+            try
             {
-                Name = NameProj.Text,
-                DateIn = DateIn.SelectedDate.Value,
-                Start=DateStart.SelectedDate.Value,
-                End= DateEnd.SelectedDate.Value,
-                Note=note.Text,
-            };
-            if (Stut.IsChecked == true)
+                    Model.Project project = new Model.Project()
+                    { Name = NameProj.Text,
+                        Note = note.Text,
+                        Start = DateStart.SelectedDate.Value.Date,
+                        End= DateEnd.SelectedDate.Value.Date,
+                        DateIn= DateIn.SelectedDate.Value.Date
+
+                    };
+                if (Stut.IsChecked == true)
                 project.stutas = true;
-       else if (Stut.IsChecked == false)
+                   else if (Stut.IsChecked == false)
                 project.stutas = false;
             context.Projects.Add(project);
             context.SaveChanges();
+            }
+            catch (Exception xe)
+            {
+
+                MessageBox.Show(xe.ToString());
+            }
             FillDate();
+            }
             clr();
 
         }

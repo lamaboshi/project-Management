@@ -26,25 +26,28 @@
                             <TextBox Name="EmailEmp" Width="120" Margin="5" materialDesign:HintAssist.Hint="الايميل "/>
                         </StackPanel>
                         <StackPanel Margin="2" Orientation="Horizontal" >
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" اسم الموظف "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الاسم "/>
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" رقم الهاتف "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الرقم "/>
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" البريد الالكتروني "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الايميل "/>
-                        </StackPanel>
+                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" العنوان "/>
+                            <TextBox Name="AddressEmp" Width="120" Margin="5" materialDesign:HintAssist.Hint="مكان السكن "/>
+                     
+
+                    </StackPanel>
                         <StackPanel Margin="2" Orientation="Horizontal" >
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" اسم الموظف "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الاسم "/>
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" رقم الهاتف "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الرقم "/>
-                            <TextBlock  Margin="10" FontSize="13" FontWeight="Bold" Text=" البريد الالكتروني "/>
-                            <TextBox  Width="120" Margin="5" materialDesign:HintAssist.Hint="الايميل "/>
+
+                        <TextBlock   FontSize="13" Margin="2" FontWeight="DemiBold" Text="تخصص الموظف"/>
+                        <ComboBox  Margin="2" materialDesign:HintAssist.Hint="Search" Width="150" ></ComboBox>
+                        <TextBlock Margin="2"  FontSize="13" FontWeight="DemiBold" Text="تخصص الموظف"/>
+                        <ComboBox  Margin="2" materialDesign:HintAssist.Hint="Search" Width="150" ></ComboBox>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid Height="Auto">
-                            <DataGrid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                            <DataGrid Grid.Column="0">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="اسم الموظف"/>
                                     <DataGridTextColumn Header="شهادة الموظف"/>
@@ -52,16 +55,22 @@
                                     
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <DataGrid HorizontalAlignment="Right">
+                            <DataGrid Grid.Column="2">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="اسم الموظف"/>
                                     <DataGridTextColumn Header="دور الموظف "/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                        </Grid>
-                    </StackPanel>
+                        <GridSplitter HorizontalAlignment="Center"   
+                      VerticalAlignment="Stretch"   
+                      Grid.Column="1"   
+                       Width="4" Background="#FF234F71" >
+                        </GridSplitter>
+                    </Grid>
+                    </ScrollViewer>
+                </StackPanel>
                 <StackPanel Grid.Row="2" Height="Auto">
-                    <DataGrid>
+                    <DataGrid Name="DgAll">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="اسم الموظف"/>
                             <DataGridTextColumn Header="رقم الهاتف"/>

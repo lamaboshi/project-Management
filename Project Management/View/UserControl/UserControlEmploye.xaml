@@ -7,93 +7,78 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="415" d:DesignWidth="360">
-    <materialDesign:DialogHost Name="EmpD" IsOpen="False" >
-        <materialDesign:DialogHost.DialogContent>
-            <local:UserControlEmpDegree/>
-        </materialDesign:DialogHost.DialogContent>
-        <materialDesign:DialogHost Name="EmpR" IsOpen="False" >
-            <materialDesign:DialogHost.DialogContent>
-                <local:UserControlEmpRole/>
-            </materialDesign:DialogHost.DialogContent>
-            <materialDesign:DialogHost Name="EmpS" IsOpen="False" >
-                <materialDesign:DialogHost.DialogContent>
-                    <local:UserControlEmpSpac/>
-                </materialDesign:DialogHost.DialogContent>
-                <Grid Background="#FFA6CCD7">
+    <Grid Background="#FFA6CCD7">
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="170"/>
-                            <RowDefinition Height="170"/>
-                            <RowDefinition Height="60"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="180"/>
-                        </Grid.ColumnDefinitions>
-                        <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="0" Grid.Column="0">
-                            <Grid>
-                                <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="0" Grid.Column="0">
+                <Grid>
+                    <StackPanel>
 
-                                    <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Add" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
-                                        <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
+                        <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Add" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
+                            <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
 
-                                    </StackPanel>
+                        </StackPanel>
 
-                                    <Button Name="BtnNewOne" Click="BtnNewOne_Click" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
-                                        <TextBlock Foreground="#FF0B2538" Text="موظف جديد" FontSize="10"/>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                        <Border  BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="1" Grid.Column="0">
-                            <StackPanel>
-                                <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Briefcase" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
-                                    <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
-
-                                </StackPanel>
-                                <Button Name="BtnSpecial" Click="BtnSpecial_Click" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
-                                    <TextBlock Foreground="#FF0B2538" Text="تخصص الموظف" FontSize="10"/>
-                                </Button>
-                            </StackPanel>
-
-                        </Border>
-                        <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="0" Grid.Column="1">
-                            <Grid>
-                                <StackPanel>
-                                    <materialDesign:PackIcon  Foreground="#FF0B2538" Kind="AccountStar" Margin="5" Width="60" Height="80" HorizontalAlignment="Stretch"  />
-                                    <Button Name="BtnDrg" Click="BtnDrg_Click" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
-                                        <TextBlock Foreground="#FF0B2538" Text="دور الموظف" FontSize="10"/>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                        <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="1" Grid.Column="1">
-                            <StackPanel>
-                                <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="BallotOutline" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
-                                    <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
-
-                                </StackPanel>
-                                <Button Name="BtnRloy" Click="BtnRloy_Click" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
-                                    <TextBlock Foreground="#FF0B2538" Text="درجة الموظف" FontSize="10"/>
-                                </Button>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderThickness="3" Margin="2" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="2" Grid.ColumnSpan="2">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Foreground="#FF0B2538" Kind="AccountSupervisor" Margin="5" Width="50" Height="40" HorizontalAlignment="Stretch"  />
-                                <Button Name="All" Click="All_Click" Margin="10" Width="200" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
-                                    <TextBlock Foreground="#FF0B2538" Text=" الموظفين" FontSize="10"/>
-                                </Button>
-                            </StackPanel>
-                        </Border>
-
-                    </Grid>
+                        <Button Name="BtnNewOne" Click="BtnNewOne_Click" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
+                            <TextBlock Foreground="#FF0B2538" Text="موظف جديد" FontSize="10"/>
+                        </Button>
+                    </StackPanel>
                 </Grid>
-            </materialDesign:DialogHost>
-        </materialDesign:DialogHost>
-    </materialDesign:DialogHost>
+            </Border>
+            <Border  BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="1" Grid.Column="0">
+                <StackPanel>
+                    <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Briefcase" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
+                        <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
+
+                    </StackPanel>
+                    <Button Name="BtnSpecial"  Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
+                        <TextBlock Foreground="#FF0B2538" Text="تخصص الموظف" FontSize="10"/>
+                    </Button>
+                </StackPanel>
+
+            </Border>
+            <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="0" Grid.Column="1">
+                <Grid>
+                    <StackPanel>
+                        <materialDesign:PackIcon  Foreground="#FF0B2538" Kind="AccountStar" Margin="5" Width="60" Height="80" HorizontalAlignment="Stretch"  />
+                        <Button Name="BtnDrg"  Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
+                            <TextBlock Foreground="#FF0B2538" Text="دور الموظف" FontSize="10"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border BorderThickness="3" Margin="5" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="1" Grid.Column="1">
+                <StackPanel>
+                    <StackPanel Margin="5" Width="70" Height="80" HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BallotOutline" Margin="0 0 -10 0" Foreground="#FF0B2538" Width="30" Height="70" HorizontalAlignment="Stretch"/>
+                        <materialDesign:PackIcon Foreground="#FF0B2538" Kind="Account" Width="50" Height="70" HorizontalAlignment="Stretch"  />
+
+                    </StackPanel>
+                    <Button Name="BtnRloy"  Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
+                        <TextBlock Foreground="#FF0B2538" Text="درجة الموظف" FontSize="10"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+            <Border BorderThickness="3" Margin="2" BorderBrush="#FF0B2538" CornerRadius="10" Grid.Row="2" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Foreground="#FF0B2538" Kind="AccountSupervisor" Margin="5" Width="50" Height="40" HorizontalAlignment="Stretch"  />
+                    <Button Name="All" Click="All_Click" Margin="10" Width="200" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF0B2538">
+                        <TextBlock Foreground="#FF0B2538" Text=" الموظفين" FontSize="10"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
 </UserControl>

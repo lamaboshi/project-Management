@@ -1,4 +1,5 @@
-﻿using Project_Management.Util.Extension_Method;
+﻿using MaterialDesignThemes.Wpf;
+using Project_Management.Util.Extension_Method;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,12 +25,21 @@ namespace Project_Management.View.UserControl
     public partial class EmplProjectUserControl : System.Windows.Controls.UserControl
     {
         int id;
+        public  DialogHost hostD;
+        public  DialogHost hostR;
+        public  DialogHost hostS;
         Model.ContactContext context;
         private BackgroundWorker backgroundWorker1 = null;
+        UserControlShowEmploye ShowEmploye;
+        private ContentControl content;
         public EmplProjectUserControl()
         {
             InitializeComponent();
             context = new Model.ContactContext();
+            content = Home.HoldMulti;
+            hostD = EmpD;
+            hostR = EmpR;
+            hostS = EmpS;
             FillPerson();
         }
         void FillPerson()
@@ -43,11 +53,7 @@ namespace Project_Management.View.UserControl
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
             _Listpeople = context.People.Where(m => !m.IsDelete).ToObservableCollection();
-            _ListRole = context.Roles.Where(m => !m.IsDelete).ToObservableCollection();
-            _ListSpecia = context.Specialties.Where(m => !m.IsDelete).ToObservableCollection();
-            _ListDegree = context.Degrees.Where(m => !m.IsDelete).ToObservableCollection();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -62,58 +68,6 @@ namespace Project_Management.View.UserControl
 
                 System.Windows.Threading.DispatcherPriority.Background);
             });
-            Parallel.ForEach(ListRole, p => {
-
-                Application.Current.Dispatcher.
-                BeginInvoke(new Action(() => {
-                    CbRole.Items.Add(p);
-                }),
-
-                System.Windows.Threading.DispatcherPriority.Background);
-            });
-            Parallel.ForEach(ListSpecia, p => {
-
-                Application.Current.Dispatcher.
-                BeginInvoke(new Action(() => {
-                    Cbsp.Items.Add(p);
-                }),
-
-                System.Windows.Threading.DispatcherPriority.Background);
-            });
-            Parallel.ForEach(ListDegree, p => {
-
-                Application.Current.Dispatcher.
-                BeginInvoke(new Action(() => {
-                    CbDerg.Items.Add(p);
-                }),
-
-                System.Windows.Threading.DispatcherPriority.Background);
-            });
-            CbRole.DisplayMemberPath = "RoleEmpl";
-            CbRole.SelectedValuePath = "Id";
-            Cbsp.DisplayMemberPath = "Specialzation";
-            Cbsp.SelectedValuePath = "Id";
-            CbDerg.DisplayMemberPath = "language";
-            CbDerg.SelectedValuePath = "Id";
-
-        }
-        private ObservableCollection<Model.Employee.Specialty> _ListSpecia;
-        public ObservableCollection<Model.Employee.Specialty> ListSpecia
-        {
-            get { return _ListSpecia; }
-            set
-            {
-                _ListSpecia = value;
-            }
-        }
-        private ObservableCollection<Model.Employee.Degree> _ListDegree;
-        public ObservableCollection<Model.Employee.Degree> ListDegree
-        {
-            get { return _ListDegree; }
-            set
-            {
-                _ListDegree = value;
-            }
         }
         private ObservableCollection<Model.Employee.Person> _Listpeople;
         public ObservableCollection<Model.Employee.Person> Listpeople
@@ -124,33 +78,15 @@ namespace Project_Management.View.UserControl
                 _Listpeople = value;
             }
         }
-        private ObservableCollection<Model.Employee.Role> _ListRole;
-        public ObservableCollection<Model.Employee.Role> ListRole
-        {
-            get { return _ListRole; }
-            set
-            {
-                _ListRole = value;
-            }
-        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var R = CbRole.SelectedValue;
-            var S = Cbsp.SelectedValue;
             Model.Employee.Person person = new Model.Employee.Person()
             {
                 Name = NameEmp.Text,
                 Phone = PhoneEmp.Text,
                 Email = EmailEmp.Text,
-                Address = AddresEmp.Text,
-                RolePeople = _ListRole.Where(t => t.Id == (int)R).Select(m => new Model.Employee.RolePerson()
-                { RoleId = m.Id, }).ToList(),
-                SpecialtyPeoples=_ListSpecia.Where(t=>t.Id==(int)S).Select(m=>new Model.Employee.SpecialtyPerson()
-                { SpecialtyId=m.Id,}).ToList(),  
-            };
-            Model.Employee.Specialty specialty = new Model.Employee.Specialty()
-            {
-
+                Address = AddresEmp.Text
             };
             context.People.Add(person);
             context.SaveChanges();
@@ -164,9 +100,6 @@ namespace Project_Management.View.UserControl
             PhoneEmp.Text = "";
             EmailEmp.Text = "";
             AddresEmp.Text = "";
-            CbDerg.Text = "";
-            CbRole.Text = "";
-            Cbsp.Text = "";
         }
 
         private void Btnedit_Click(object sender, RoutedEventArgs e)
@@ -179,8 +112,6 @@ namespace Project_Management.View.UserControl
             PhoneEmp.Text = s.Phone.ToString();
             EmailEmp.Text = s.Email;
             AddresEmp.Text = s.Address;
-
-
         }
 
         private void BtnDelet_Click(object sender, RoutedEventArgs e)
@@ -203,6 +134,12 @@ namespace Project_Management.View.UserControl
             Edit.Visibility = Visibility.Hidden;
             FillPerson();
             crl();
+        }
+        private void AddToProject_Click(object sender, RoutedEventArgs e)
+        {
+        
+            ShowEmploye = new UserControlShowEmploye();
+            content.Content=ShowEmploye;
         }
 
         private void AddDeg_Click(object sender, RoutedEventArgs e)

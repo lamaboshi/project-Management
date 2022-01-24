@@ -14,7 +14,7 @@
                  Value="35"
                  IsIndeterminate="True" />
         </materialDesign:DialogHost.DialogContent>
-        <ScrollViewer>
+        <ScrollViewer >
             <Grid Background="White">
             <ItemsControl x:Name="CardProject"  >
                 <ItemsControl.ItemsPanel>

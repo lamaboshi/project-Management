@@ -23,7 +23,9 @@
                     <Button Name="Add" Click="Add_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF234F71" Margin="10" VerticalAlignment="Bottom" Width="100">
                         <TextBlock Text="اضافة" FontSize="15"/>
                     </Button>
-
+                    <Button Name="Close" Click="Close_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF234F71" Margin="10" VerticalAlignment="Bottom" Width="100">
+                        <TextBlock Text="الغاء" FontSize="15"/>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

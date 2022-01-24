@@ -46,14 +46,14 @@ namespace Project_Management.View.UserControl
             this.backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             this.backgroundWorker1.RunWorkerAsync();
-
+          
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             var q = context.Projects.Where(i => !i.IsDelete).ToList();
      
-            degrees = context.Degrees.Where(t => !t.IsDelete).ToList();
+           
             foreach (var item in q)
             {
                 var setinnerclass = new View.InnerClass.projectclass()
@@ -68,9 +68,10 @@ namespace Project_Management.View.UserControl
                     IsDelete = item.IsDelete,
                     CountTask = context.Tasks.Where(r => r.ProjectId == item.Id).Count(),
                     CountMetting = context.Meetings.Where(b => b.ProjectId == item.Id).Count(),
-                    EmpDeg = degrees,
+                
                 };
-                var y = context.Roles.Where(i => !i.IsDelete && i.RolePeople.Select(l=>l.PersonId).First()==item.Id).ToList();
+                var y = context.Roles.Where(i => !i.IsDelete && i.RolePeople.Select(l=>l.PersonId).FirstOrDefault()==item.Id).ToList();
+                var v = context.Degrees.Where(t => !t.IsDelete && t.Specialties.Select(g => g.SpecialtyPeoples.Select(m => m.PersonId).FirstOrDefault()).FirstOrDefault() == item.Id).ToList();
                 foreach (var j in y)
                 {
                     setinnerclass.RoleEmp.Add(new InnerClass.EmployeeClass()
@@ -80,8 +81,7 @@ namespace Project_Management.View.UserControl
 
                     });
                 }
-
-
+                setinnerclass.EmpDeg = v.ToList();
                 prclass.Add(setinnerclass);
             }
         }

@@ -24,9 +24,6 @@ namespace Project_Management.View.UserControl
 
         private StackPanel StackPanel;
         AddProject addProject;
-        TaskUserControl TaskUser;
-        MettingProjectUserControl metting;
-        EmplProjectUserControl EmplProject;
         private ContentControl content;
         UserControl.AllProjectUserControl AllProject;
         public UserControlProject()
@@ -55,41 +52,16 @@ namespace Project_Management.View.UserControl
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
-
             addProject = new AddProject();
-            //grid.Children.Add(addProject);
             content.Content = addProject;
         }
-        private void BtnMetProjecrt_Click(object sender, RoutedEventArgs e)
-        {
-            HideStack();
-            metting = new MettingProjectUserControl();
-            //grid.Children.Add(metting);
-            content.Content = metting;
-        }
-
-        private void BtnTasProjecrt_Click(object sender, RoutedEventArgs e)
-        {
-            HideStack();
-            TaskUser = new TaskUserControl();
-            //grid.Children.Add(TaskUser);
-            content.Content = TaskUser;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            HideStack();
-            EmplProject = new EmplProjectUserControl();
-            //grid.Children.Add(EmplProject);
-            content.Content = EmplProject;
-        }
-
         private void  BtnProjecrts_Click(object sender, RoutedEventArgs e)
         {
             HideStack();
             AllProject = new AllProjectUserControl();
             content.Content = AllProject;
-
         }
+
+
     }
 }

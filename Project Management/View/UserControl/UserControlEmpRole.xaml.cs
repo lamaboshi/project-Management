@@ -36,6 +36,7 @@ namespace Project_Management.View.UserControl
             };
             context.Roles.Add(role);
             context.SaveChanges();
+
             namerole.Text = "";
             
         }
